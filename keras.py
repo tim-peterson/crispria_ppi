@@ -2,30 +2,33 @@
 import os
 import tensorflow
 from tensorflow import keras
-from keras.models import Sequential
-from keras.layers import Dense
+from tensorflow.python.keras.models import Sequential
+from tensorflow.python.keras.layers import Dense
+
+#from keras.models import Sequential
+#from keras.layers import Dense
 import numpy
 # fix random seed for reproducibility
 seed = 7
 numpy.random.seed(seed)
 # load pima indians dataset
 
-dataset = numpy.loadtxt("/Users/timrpeterson/OneDrive - Washington University in St. Louis/Data/MORPHEOME/CRISPRia/huttlin_crispri_training_data.csv", delimiter=",")
+dataset = numpy.loadtxt("/Users/timrpeterson/OneDrive - Washington University in St. Louis/Data/MORPHEOME/PPI/morpheome_final-1-23-19-crispra_huttlin_trimmed.csv", delimiter=",")
 
 
 #dataset = numpy.loadtxt(os.path.dirname(os.path.realpath(__file__)) + "/pima-indians-diabetes.data.csv", delimiter=",")
 # split into input (X) and output (Y) variables
-X = dataset[:,0:8]
-Y = dataset[:,8]
+X = dataset[:,0:14]
+Y = dataset[:,14]
 # create model
 model = Sequential()
-model.add(Dense(12, input_dim=8, init='uniform', activation='relu'))
-model.add(Dense(8, init='uniform', activation='relu'))
-model.add(Dense(1, init='uniform', activation='sigmoid'))
+model.add(Dense(20, input_dim=14, activation='relu'))
+model.add(Dense(14, activation='relu'))
+model.add(Dense(1, activation='sigmoid'))
 # Compile model
 model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
 # Fit the model
-model.fit(X, Y, epochs=150, batch_size=10,  verbose=2)
+model.fit(X, Y, epochs=5, batch_size=10,  verbose=2)
 
 # evaluate the model
 scores = model.evaluate(X, Y)
