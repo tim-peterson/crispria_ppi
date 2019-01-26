@@ -19,3 +19,5 @@ v7 multiplying rho's
 v8 multiplying rho's not taking abs() value of them
 
 got rid of sigmoid activation in output layer so predictions aren't binary but rather a scale.
+
+v9 TO-DO: use Huttlin Compass scores rather than binary 0/1 binding no binding
