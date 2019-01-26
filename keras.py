@@ -13,7 +13,7 @@ seed = 7
 numpy.random.seed(seed)
 # load pima indians dataset
 
-training_dataset = numpy.loadtxt("/Users/timrpeterson/OneDrive - Washington University in St. Louis/Data/MORPHEOME/PPI/morpheome_final-1-24-19-crispria_huttlin_trimmed_v5.csv", delimiter=",")
+training_dataset = numpy.loadtxt("/Users/timrpeterson/OneDrive - Washington University in St. Louis/Data/MORPHEOME/PPI/morpheome_final-1-25-19-crispria_huttlin_trimmed_v8.csv", delimiter=",")
 # skiprows=1,
 #, usecols = (1,15)
 #dataset = numpy.loadtxt(os.path.dirname(os.path.realpath(__file__)) + "/pima-indians-diabetes.data.csv", delimiter=",")
@@ -26,9 +26,9 @@ Y = training_dataset[:,14]
 #Y = training_dataset[:,14]
 # create model
 model = Sequential()
-model.add(Dense(20, input_dim=14, activation='relu'))
+model.add(Dense(220, input_dim=14, activation='relu'))
 #model.add(Dense(20, input_dim=14, activation='relu'))
-model.add(Dense(14, activation='relu'))
+model.add(Dense(214, activation='relu'))
 #model.add(Dense(14, activation='relu'))
 """model.add(Dense(14, activation='relu'))
 model.add(Dense(14, activation='relu'))
@@ -41,7 +41,7 @@ model.add(Dense(14, activation='relu'))
 model.add(Dense(14, activation='relu'))
 model.add(Dense(14, activation='relu'))
 model.add(Dense(14, activation='relu'))"""
-model.add(Dense(1, activation='sigmoid'))
+model.add(Dense(1))
 # Compile model
 model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
 # Fit the model
@@ -51,7 +51,7 @@ model.fit(X, Y, epochs=5, batch_size=10,  verbose=2)
 scores = model.evaluate(X, Y)
 print("\n%s: %.2f%%" % (model.metrics_names[1], scores[1]*100))
 
-test_dataset = numpy.loadtxt("/Users/timrpeterson/OneDrive - Washington University in St. Louis/Data/MORPHEOME/PPI/morpheome_final-1-24-19-crispria_test_mtor_atraid.csv", delimiter=",")
+test_dataset = numpy.loadtxt("/Users/timrpeterson/OneDrive - Washington University in St. Louis/Data/MORPHEOME/PPI/morpheome_final-1-25-19-crispria_test_mtor_atraid_v8.csv", delimiter=",")
 #, usecols = (1,14)
 #test = training_dataset[:,0:13]
 # calculate predictions
